@@ -21,6 +21,7 @@ RUN if [ -f hooks.json ]; then \
 # Set environment
 ENV NODE_ENV=production
 ENV OPENCLAW_GATEWAY_PORT=18789
+ENV OLLAMA_API_KEY=ollama-local
 
 # Expose gateway port
 EXPOSE 18789
