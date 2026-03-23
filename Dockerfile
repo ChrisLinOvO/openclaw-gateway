@@ -9,6 +9,9 @@ RUN npm install -g openclaw
 # Create openclaw config directory and set HOME
 ENV HOME=/root
 ENV OPENCLAW_CONFIG_DIR=/root/.openclaw
+ENV PORT=18789
+ENV OPENCLAW_GATEWAY_PORT=18789
+ENV OLLAMA_API_KEY=ollama-local
 
 # Copy config files
 COPY openclaw.json ${OPENCLAW_CONFIG_DIR}/openclaw.json
@@ -18,13 +21,8 @@ RUN if [ -f hooks.json ]; then \
       cp hooks.json ${OPENCLAW_CONFIG_DIR}/hooks.json; \
     fi
 
-# Set environment
-ENV NODE_ENV=production
-ENV OPENCLAW_GATEWAY_PORT=18789
-ENV OLLAMA_API_KEY=ollama-local
-
 # Expose gateway port
-EXPOSE 18789
+EXPOSE ${PORT}
 
-# Start gateway with explicit config
-CMD ["openclaw", "gateway", "--port", "18789", "--bind", "lan", "--allow-unconfigured"]
+# Start gateway
+CMD ["openclaw", "gateway", "--port", "${PORT}", "--bind", "lan", "--allow-unconfigured"]
