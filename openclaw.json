@@ -16,7 +16,7 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "openrouter/minimax/minimax-m2.7:free"
+        "primary": "openrouter/stepfun/step-3.5-flash:free"
       },
       "memorySearch": {
         "enabled": false
@@ -27,8 +27,16 @@
     "providers": {
       "openrouter": {
         "api": "openai",
-        "apiKey": "dummy-key-for-init",
-        "baseUrl": "https://openrouter.ai/api/v1"
+        "apiKey": "${OPENROUTER_API_KEY}",
+        "baseUrl": "https://openrouter.ai/api/v1",
+        "models": [
+          {
+            "id": "stepfun/step-3.5-flash:free",
+            "name": "step-3.5-flash:free",
+            "contextWindow": 16384,
+            "input": ["text"]
+          }
+        ]
       }
     }
   },
