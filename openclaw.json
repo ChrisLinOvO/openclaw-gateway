@@ -32,6 +32,41 @@
       }
     }
   },
+  "models": {
+    "providers": {
+      "ollama": {
+        "api": "ollama",
+        "apiKey": "ollama-cloud",
+        "baseUrl": "https://ollama.cloud",
+        "models": [
+          {
+            "id": "minimax-m2.7:cloud",
+            "name": "minimax-m2.7:cloud",
+            "contextWindow": 204800,
+            "input": ["text"]
+          },
+          {
+            "id": "glm-5:cloud",
+            "name": "glm-5:cloud",
+            "contextWindow": 262144,
+            "input": ["text"]
+          },
+          {
+            "id": "qwen3.5:cloud",
+            "name": "qwen3.5:cloud",
+            "contextWindow": 262144,
+            "input": ["text", "image"]
+          },
+          {
+            "id": "kimi-k2.5:cloud",
+            "name": "kimi-k2.5:cloud",
+            "contextWindow": 262144,
+            "input": ["text", "image"]
+          }
+        ]
+      }
+    }
+  },
   "auth": {
     "profiles": {
       "ollama:default": {
