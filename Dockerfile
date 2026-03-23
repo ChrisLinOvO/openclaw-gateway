@@ -11,7 +11,13 @@ RUN mkdir -p /home/node/.openclaw
 
 # Copy config files
 COPY openclaw.json /home/node/.openclaw/openclaw.json
-COPY hooks.json /home/node/.openclaw/hooks.json 2>/dev/null || true
+
+# Copy hooks.json if it exists, otherwise touch it
+RUN if [ -f hooks.json ]; then \
+      cp hooks.json /home/node/.openclaw/hooks.json; \
+    else \
+      echo '{}' > /home/node/.openclaw/hooks.json; \
+    fi
 
 # Set environment
 ENV NODE_ENV=production
