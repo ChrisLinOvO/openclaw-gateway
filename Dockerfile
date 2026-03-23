@@ -27,4 +27,4 @@ ENV OPENCLAW_GATEWAY_PORT=18789
 EXPOSE 18789
 
 # Start gateway
-CMD ["openclaw", "gateway", "--port", "18789", "--bind", "0.0.0.0"]
+CMD ["openclaw", "gateway", "--port", "18789", "--bind", "lan"]
