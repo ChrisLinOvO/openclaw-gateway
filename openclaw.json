@@ -47,5 +47,15 @@
         "provider": "openrouter"
       }
     }
+  },
+  "channels": {
+    "discord": {
+      "enabled": true,
+      "token": "${DISCORD_BOT_TOKEN}"
+    }
+  },
+  "env": {
+    "GH_TOKEN": "${GH_TOKEN}",
+    "GH_TOKEN_V2": "${GH_TOKEN_V2}"
   }
 }
