@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: openclaw-gateway
+    env: docker
+    dockerfilePath: ./Dockerfile
+    region: singapore
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: OPENCLAW_GATEWAY_PORT
+        value: 18789
+      - key: GH_TOKEN
+        sync: false
+      - key: GH_TOKEN_V2
+        sync: false
+      - key: OPENCLAW_HOOKS_TOKEN
+        generateValue: true

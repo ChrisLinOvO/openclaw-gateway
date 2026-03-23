@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "enabled": true,
+    "token": "${OPENCLAW_HOOKS_TOKEN}",
+    "allowedAgentIds": ["main"],
+    "mappings": {
+      "github": {
+        "path": "/hooks/github",
+        "action": "agent",
+        "agentId": "main",
+        "deliver": true,
+        "channel": "discord"
+      }
+    }
+  }
+}

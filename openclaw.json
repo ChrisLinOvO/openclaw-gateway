@@ -1,0 +1,48 @@
+{
+  "gateway": {
+    "auth": {
+      "mode": "token",
+      "token": "${OPENCLAW_GATEWAY_TOKEN}"
+    },
+    "bind": "0.0.0.0",
+    "mode": "local",
+    "port": 18789
+  },
+  "hooks": {
+    "enabled": true,
+    "token": "${OPENCLAW_HOOKS_TOKEN}",
+    "path": "/hooks"
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "ollama/minimax-m2.7:cloud",
+        "fallbacks": [
+          "ollama/glm-5:cloud",
+          "ollama/qwen3.5:cloud"
+        ]
+      },
+      "imageModel": {
+        "primary": "ollama/kimi-k2.5:cloud"
+      },
+      "memorySearch": {
+        "enabled": true,
+        "model": "ollama/kimi-k2.5:cloud",
+        "provider": "openai"
+      },
+      "workspace": "/home/node/.openclaw/workspace"
+    }
+  },
+  "auth": {
+    "profiles": {
+      "ollama:default": {
+        "mode": "api_key",
+        "provider": "ollama"
+      },
+      "openrouter:default": {
+        "mode": "api_key",
+        "provider": "openrouter"
+      }
+    }
+  }
+}
