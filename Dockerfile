@@ -6,17 +6,16 @@ WORKDIR /app
 # Install OpenClaw globally
 RUN npm install -g openclaw
 
-# Create openclaw config directory
-RUN mkdir -p /home/node/.openclaw
+# Create openclaw config directory and set HOME
+ENV HOME=/root
+ENV OPENCLAW_CONFIG_DIR=/root/.openclaw
 
 # Copy config files
-COPY openclaw.json /home/node/.openclaw/openclaw.json
+COPY openclaw.json ${OPENCLAW_CONFIG_DIR}/openclaw.json
 
-# Copy hooks.json if it exists, otherwise touch it
+# Copy hooks.json if it exists
 RUN if [ -f hooks.json ]; then \
-      cp hooks.json /home/node/.openclaw/hooks.json; \
-    else \
-      echo '{}' > /home/node/.openclaw/hooks.json; \
+      cp hooks.json ${OPENCLAW_CONFIG_DIR}/hooks.json; \
     fi
 
 # Set environment
@@ -26,5 +25,5 @@ ENV OPENCLAW_GATEWAY_PORT=18789
 # Expose gateway port
 EXPOSE 18789
 
-# Start gateway
-CMD ["openclaw", "gateway", "--port", "18789", "--bind", "lan"]
+# Start gateway with explicit config
+CMD ["openclaw", "gateway", "--port", "18789", "--bind", "lan", "--allow-unconfigured"]
