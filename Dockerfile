@@ -19,8 +19,8 @@ RUN if [ -f hooks.json ]; then \
       cp hooks.json ${OPENCLAW_CONFIG_DIR}/hooks.json; \
     fi
 
-# Expose PORT from environment (Render auto-sets this)
-EXPOSE ${PORT:-10000}
+# Expose PORT from environment
+EXPOSE ${PORT}
 
-# Start gateway - listen on PORT env var
-CMD ["openclaw", "gateway", "--port", "${PORT:-10000}", "--bind", "lan", "--allow-unconfigured"]
+# Start gateway - use PORT env var directly
+CMD ["sh", "-c", "openclaw gateway --port $PORT --bind lan --allow-unconfigured"]
