@@ -1,5 +1,5 @@
 # OpenClaw Gateway with Webhook Support
-FROM node:22-alpine
+FROM node:22
 
 WORKDIR /app
 
@@ -22,5 +22,5 @@ RUN if [ -f hooks.json ]; then \
 # Expose PORT from environment
 EXPOSE ${PORT}
 
-# Start gateway - use PORT env var directly
+# Start gateway
 CMD ["sh", "-c", "openclaw gateway --port $PORT --bind lan --allow-unconfigured"]
