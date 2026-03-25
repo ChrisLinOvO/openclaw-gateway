@@ -5,8 +5,7 @@
       "token": "${OPENCLAW_GATEWAY_TOKEN}"
     },
     "bind": "lan",
-    "mode": "local",
-    "port": 10000
+    "mode": "local"
   },
   "hooks": {
     "enabled": true,

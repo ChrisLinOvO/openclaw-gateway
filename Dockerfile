@@ -16,11 +16,11 @@ COPY openclaw.json ${OPENCLAW_CONFIG_DIR}/openclaw.json
 
 # Copy hooks.json if it exists
 RUN if [ -f hooks.json ]; then \
-      cp hooks.json ${OPENCLAW_CONFIG_DIR}/hooks.json; \
-    fi
+ cp hooks.json ${OPENCLAW_CONFIG_DIR}/hooks.json; \
+ fi
 
 # Expose PORT from environment
-EXPOSE ${PORT}
+EXPOSE ${OPENCLAW_GATEWAY_PORT}
 
 # Start gateway
-CMD ["sh", "-c", "openclaw gateway --port $PORT --bind lan --allow-unconfigured"]
+CMD ["sh", "-c", "openclaw gateway --port $OPENCLAW_GATEWAY_PORT --bind lan --allow-unconfigured"]
