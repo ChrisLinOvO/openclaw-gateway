@@ -6,6 +6,9 @@ WORKDIR /app
 # Install OpenClaw globally
 RUN npm install -g openclaw
 
+# Build Control UI assets
+RUN pnpm ui:build || npm run ui:build || true
+
 # Create openclaw config directory and set HOME
 ENV HOME=/root
 ENV OPENCLAW_CONFIG_DIR=/root/.openclaw
